@@ -146,4 +146,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     initGalleryLightbox();
 });
+
+});
+// Menu Mobile
+const mobileMenuBtn = document.querySelector('.mobile-menu');
+const nav = document.querySelector('nav ul');
+
+mobileMenuBtn.addEventListener('click', function() {
+    nav.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+});
+
+// Fechar menu ao clicar em um link
+const navLinks = document.querySelectorAll('nav ul li a');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        nav.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
+});
+// Evitar zoom em inputs em mobile
+document.addEventListener('DOMContentLoaded', function() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
+    }
+
+    // Melhorar feedback visual para toques
+    const touchElements = document.querySelectorAll('a, button, .btn');
+    touchElements.forEach(el => {
+        el.addEventListener('touchstart', function() {
+            this.classList.add('active');
+        });
+        
+        el.addEventListener('touchend', function() {
+            this.classList.remove('active');
+        });
+    });
 });
