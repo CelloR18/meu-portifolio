@@ -151,10 +151,28 @@ document.addEventListener('DOMContentLoaded', function() {
 // Menu Mobile
 const mobileMenuBtn = document.querySelector('.mobile-menu');
 const nav = document.querySelector('nav ul');
+const barsIcon = document.querySelector('.mobile-menu .fa-bars');
+const timesIcon = document.querySelector('.mobile-menu .fa-times') || document.createElement('i');
+
+// Verifica se o ícone de fechar não existe e cria se necessário
+if (!document.querySelector('.mobile-menu .fa-times')) {
+    timesIcon.className = 'fas fa-times';
+    timesIcon.style.display = 'none';
+    mobileMenuBtn.appendChild(timesIcon);
+}
 
 mobileMenuBtn.addEventListener('click', function() {
     nav.classList.toggle('active');
     document.body.classList.toggle('no-scroll');
+    
+    // Alterna entre os ícones
+    if (nav.classList.contains('active')) {
+        barsIcon.style.display = 'none';
+        timesIcon.style.display = 'block';
+    } else {
+        barsIcon.style.display = 'block';
+        timesIcon.style.display = 'none';
+    }
 });
 
 // Fechar menu ao clicar em um link
@@ -163,23 +181,7 @@ navLinks.forEach(link => {
     link.addEventListener('click', function() {
         nav.classList.remove('active');
         document.body.classList.remove('no-scroll');
-    });
-});
-// Evitar zoom em inputs em mobile
-document.addEventListener('DOMContentLoaded', function() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
-    }
-
-    // Melhorar feedback visual para toques
-    const touchElements = document.querySelectorAll('a, button, .btn');
-    touchElements.forEach(el => {
-        el.addEventListener('touchstart', function() {
-            this.classList.add('active');
-        });
-        
-        el.addEventListener('touchend', function() {
-            this.classList.remove('active');
-        });
+        barsIcon.style.display = 'block';
+        timesIcon.style.display = 'none';
     });
 });
