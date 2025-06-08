@@ -148,46 +148,60 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 });
-document.addEventListener('DOMContentLoaded', function() {
-    // Menu Mobile
-    const mobileMenuBtn = document.querySelector('.mobile-menu');
-    const nav = document.querySelector('nav ul');
+// Menu Mobile Aprimorado
+const mobileMenuBtn = document.querySelector('.mobile-menu');
+const nav = document.querySelector('nav ul');
+const barsIcon = document.querySelector('.mobile-menu .fa-bars');
+const timesIcon = document.querySelector('.mobile-menu .fa-times') || document.createElement('i');
+
+// Cria o ícone de fechar se não existir
+if (!document.querySelector('.mobile-menu .fa-times')) {
+    timesIcon.className = 'fas fa-times';
+    timesIcon.style.display = 'none';
+    mobileMenuBtn.appendChild(timesIcon);
+}
+
+// Cria o overlay
+const overlay = document.createElement('div');
+overlay.className = 'menu-overlay';
+document.body.appendChild(overlay);
+
+mobileMenuBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    nav.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+    overlay.classList.toggle('active');
     
-    // Cria o ícone de fechar se não existir
-    if (!document.querySelector('.mobile-menu .fa-times')) {
-        const timesIcon = document.createElement('i');
-        timesIcon.className = 'fas fa-times';
+    // Alterna entre os ícones
+    if (nav.classList.contains('active')) {
+        barsIcon.style.display = 'none';
+        timesIcon.style.display = 'block';
+    } else {
+        barsIcon.style.display = 'block';
         timesIcon.style.display = 'none';
-        mobileMenuBtn.appendChild(timesIcon);
     }
-    
-    const barsIcon = document.querySelector('.mobile-menu .fa-bars');
-    const timesIcon = document.querySelector('.mobile-menu .fa-times');
-    
-    mobileMenuBtn.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-        
-        // Alterna entre os ícones
-        if (nav.classList.contains('active')) {
-            barsIcon.style.display = 'none';
-            timesIcon.style.display = 'block';
-        } else {
-            barsIcon.style.display = 'block';
-            timesIcon.style.display = 'none';
-        }
-    });
-    
-    // Fechar menu ao clicar em um link
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            nav.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-            barsIcon.style.display = 'block';
-            timesIcon.style.display = 'none';
-        });
-    });
-    
-    // Restante do seu código JavaScript...
+});
+
+// Fechar menu ao clicar no overlay ou em um link
+overlay.addEventListener('click', closeMenu);
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+function closeMenu() {
+    nav.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    overlay.classList.remove('active');
+    barsIcon.style.display = 'block';
+    timesIcon.style.display = 'none';
+}
+
+// Fechar menu ao rolar
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset;
+    if (Math.abs(currentScroll - lastScroll) > 50) {
+        closeMenu();
+    }
+    lastScroll = currentScroll;
 });
