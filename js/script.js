@@ -148,40 +148,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 });
-// Menu Mobile
-const mobileMenuBtn = document.querySelector('.mobile-menu');
-const nav = document.querySelector('nav ul');
-const barsIcon = document.querySelector('.mobile-menu .fa-bars');
-const timesIcon = document.querySelector('.mobile-menu .fa-times') || document.createElement('i');
-
-// Verifica se o ícone de fechar não existe e cria se necessário
-if (!document.querySelector('.mobile-menu .fa-times')) {
-    timesIcon.className = 'fas fa-times';
-    timesIcon.style.display = 'none';
-    mobileMenuBtn.appendChild(timesIcon);
-}
-
-mobileMenuBtn.addEventListener('click', function() {
-    nav.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu Mobile
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav ul');
     
-    // Alterna entre os ícones
-    if (nav.classList.contains('active')) {
-        barsIcon.style.display = 'none';
-        timesIcon.style.display = 'block';
-    } else {
-        barsIcon.style.display = 'block';
+    // Cria o ícone de fechar se não existir
+    if (!document.querySelector('.mobile-menu .fa-times')) {
+        const timesIcon = document.createElement('i');
+        timesIcon.className = 'fas fa-times';
         timesIcon.style.display = 'none';
+        mobileMenuBtn.appendChild(timesIcon);
     }
-});
-
-// Fechar menu ao clicar em um link
-const navLinks = document.querySelectorAll('nav ul li a');
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        nav.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-        barsIcon.style.display = 'block';
-        timesIcon.style.display = 'none';
+    
+    const barsIcon = document.querySelector('.mobile-menu .fa-bars');
+    const timesIcon = document.querySelector('.mobile-menu .fa-times');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        
+        // Alterna entre os ícones
+        if (nav.classList.contains('active')) {
+            barsIcon.style.display = 'none';
+            timesIcon.style.display = 'block';
+        } else {
+            barsIcon.style.display = 'block';
+            timesIcon.style.display = 'none';
+        }
     });
+    
+    // Fechar menu ao clicar em um link
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            barsIcon.style.display = 'block';
+            timesIcon.style.display = 'none';
+        });
+    });
+    
+    // Restante do seu código JavaScript...
 });
