@@ -47,6 +47,9 @@ a:hover {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
+    background: var(--card-bg);
+    border-radius: 4px;
 }
 
 .container {
@@ -83,12 +86,14 @@ section {
     border: none;
     cursor: pointer;
     gap: 0.5rem;
-    
+    min-height: 44px;
+    min-width: 44px;
 }
 
 .btn.primary {
     background-color: var(--primary-color);
     color: white;
+    margin-right: 1rem;
 }
 
 .btn.primary:hover {
@@ -192,6 +197,7 @@ nav ul li a:hover::after {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    z-index: 1001;
 }
 
 /* Hero Section */
@@ -245,6 +251,7 @@ nav ul li a:hover::after {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     max-width: 450px;
     margin-left: auto;
+    background: var(--card-bg);
 }
 
 .hero-image .image-wrapper::before {
@@ -261,7 +268,8 @@ nav ul li a:hover::after {
 .hero-image img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
@@ -448,6 +456,7 @@ nav ul li a:hover::after {
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     aspect-ratio: 16/9;
+    background: var(--card-bg);
 }
 
 .gallery-item:hover {
@@ -522,44 +531,6 @@ nav ul li a:hover::after {
     cursor: pointer;
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-    .project-main {
-        flex-direction: column;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .gallery-item.main-image {
-        grid-column: span 3;
-    }
-}
-
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .gallery-item.main-image {
-        grid-column: span 2;
-    }
-}
-
-@media (max-width: 576px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-item.main-image {
-        grid-column: span 1;
-    }
-    
-    .project-buttons {
-        flex-direction: column;
-    }
-}
 /* Services Section */
 .services {
     background-color: var(--darker-bg);
@@ -753,6 +724,7 @@ nav ul li a:hover::after {
     color: var(--text-color);
     font-size: 1rem;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .social-icons a:hover {
@@ -868,6 +840,18 @@ footer {
     .portfolio-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-item.main-image {
+        grid-column: span 3;
+    }
+    
+    .project-main {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
@@ -875,24 +859,142 @@ footer {
         padding: 4rem 0;
     }
     
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-number {
+        font-size: 1rem;
+    }
+    
+    /* Menu Mobile */
     nav ul {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding-top: 80px;
+    }
+    
+    nav ul.active {
+        right: 0;
     }
     
     .mobile-menu {
         display: block;
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .mobile-menu i.fa-times {
+        display: none;
+    }
+    
+    nav ul.active ~ .mobile-menu i.fa-bars {
+        display: none;
+    }
+    
+    nav ul.active ~ .mobile-menu i.fa-times {
+        display: block;
+    }
+    
+    .no-scroll {
+        overflow: hidden;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 7rem 0 3rem;
+        text-align: center;
     }
     
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+    
+    .hero-text .subtitle {
+        font-size: 1rem;
     }
     
     .cta-buttons {
         flex-direction: column;
+        justify-content: center;
     }
     
+    /* About Section */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Portfolio */
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .gallery-item.main-image {
+        grid-column: span 2;
+    }
+    
+    .portfolio-single {
+        padding: 1.5rem;
+    }
+    
+    .project-buttons {
+        flex-direction: column;
+    }
+    
+    /* Services */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    /* Contact */
+    .contact-form, 
+    .contact-info {
+        padding: 1.5rem;
+    }
+    
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    /* Ajustes globais */
+    .container {
+        width: 95%;
+    }
+    
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 }
 
@@ -905,20 +1007,47 @@ footer {
         font-size: 2rem;
     }
     
-    .hero-text .subtitle {
-        font-size: 1rem;
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-item.main-image {
+        grid-column: span 1;
     }
     
     .skills-grid {
         grid-template-columns: 1fr 1fr;
     }
     
-    .portfolio-grid,
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .contact-form {
         padding: 1.5rem;
     }
+    
+    /* Feedback visual para toques */
+    a.active, button.active, .btn.active {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+}
+
+/* Otimização para imagens */
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.image-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* Proporção 16:9 */
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
