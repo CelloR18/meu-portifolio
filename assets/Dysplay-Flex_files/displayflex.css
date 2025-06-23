@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 10px;
+    border: 1px solid green;
+    display: flex;
+    flex-direction:row;
+
+
+}
+
+.block{
+    width:100px;
+    height: 100px;
+    background: blue;
+    border: 5px solid red;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
