@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Implementação de efeito de digitação pode ser adicionada aqui
         // Sugestão: usar a biblioteca Typed.js para esse efeito
     }
-    // Lightbox para a galeria
+    // Atualize a função initGalleryLightbox no script.js
 function initGalleryLightbox() {
     const galleryItems = document.querySelectorAll('.gallery-item img');
     const lightbox = document.createElement('div');
@@ -114,32 +114,102 @@ function initGalleryLightbox() {
         <div class="lightbox-content">
             <span class="close-lightbox">&times;</span>
             <img src="" alt="">
+            <div class="lightbox-caption"></div>
+            <div class="lightbox-nav">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
     `;
     document.body.appendChild(lightbox);
     
     const lightboxImg = lightbox.querySelector('img');
     const closeBtn = lightbox.querySelector('.close-lightbox');
+    const caption = lightbox.querySelector('.lightbox-caption');
+    const prevBtn = lightbox.querySelector('.prev-btn');
+    const nextBtn = lightbox.querySelector('.next-btn');
+    let currentIndex = 0;
     
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            lightbox.style.display = 'flex';
-            lightboxImg.src = this.src;
-            lightboxImg.alt = this.alt;
+    // Array com todos os itens da galeria
+    const galleryArray = Array.from(galleryItems);
+    
+    // Função para abrir o lightbox
+    function openLightbox(index) {
+        currentIndex = index;
+        lightbox.style.display = 'flex';
+        lightboxImg.src = galleryArray[currentIndex].src;
+        lightboxImg.alt = galleryArray[currentIndex].alt;
+        
+        // Adiciona a legenda se existir
+        const imageCaption = galleryArray[currentIndex].nextElementSibling;
+        if (imageCaption && imageCaption.classList.contains('image-caption')) {
+            caption.textContent = imageCaption.textContent;
+            caption.style.display = 'block';
+        } else {
+            caption.style.display = 'none';
+        }
+        
+        // Desabilita/ativa botões de navegação
+        prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+        nextBtn.style.display = currentIndex === galleryArray.length - 1 ? 'none' : 'flex';
+        
+        // Previne scroll no body
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Event listeners para os itens da galeria
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLightbox(index);
         });
     });
     
+    // Navegação entre imagens
+    function navigate(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = galleryArray.length - 1;
+        if (currentIndex >= galleryArray.length) currentIndex = 0;
+        openLightbox(currentIndex);
+    }
+    
+    // Event listeners para controles do lightbox
     closeBtn.addEventListener('click', function() {
         lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+    
+    prevBtn.addEventListener('click', function() {
+        navigate(-1);
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        navigate(1);
     });
     
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
             lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Navegação por teclado
+    document.addEventListener('keydown', function(e) {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'Escape') {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            if (e.key === 'ArrowLeft') {
+                navigate(-1);
+            }
+            if (e.key === 'ArrowRight') {
+                navigate(1);
+            }
         }
     });
 }
-
 // Inicializar quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     // ... outros códigos existentes ...
@@ -204,4 +274,25 @@ window.addEventListener('scroll', function() {
         closeMenu();
     }
     lastScroll = currentScroll;
+});
+// Adicione ao script.js
+const backToTopBtn = document.createElement('button');
+backToTopBtn.id = 'back-to-top';
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+document.body.appendChild(backToTopBtn);
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
