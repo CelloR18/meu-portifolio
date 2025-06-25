@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Marcelo Gustavo | Desenvolvedor Front-End</title>
+    <meta name="description" content="Portfólio de Marcelo Gustavo - Desenvolvedor Front-End especializado em criar experiências digitais modernas e responsivas">
+    <meta name="theme-color" content="#121212">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#121212">
 </head>
 <body>
     <header>
@@ -19,20 +19,21 @@
                 <span>Marcelo Gustavo</span>
                 <span>Front-End Developer</span>
             </div>
-           <nav>
-    <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#contato">Contato</a></li>
-    </ul>
-    <div class="mobile-menu">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-times" style="display: none;"></i>
-    </div>
-</nav>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+            </nav>
         </div>
+        <div class="menu-overlay"></div>
     </header>
 
     <section id="inicio" class="hero">
@@ -101,72 +102,69 @@
     </section>
 
     <section id="portfolio" class="portfolio">
-    <div class="container">
-        <h2><span class="section-number">02.</span> Portfólio</h2>
-        <p class="section-description">Meu projeto mais recente</p>
-        
-        <div class="portfolio-single">
-            <div class="project-main">
-                <div class="project-header">
-                    <h3>ALPHA Cursos Náuticos</h3>
-                    <p>Site completo desenvolvido com HTML, CSS e JavaScript puro</p>
-                    <div class="tech-tags">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                        <span>Responsivo</span>
+        <div class="container">
+            <h2><span class="section-number">02.</span> Portfólio</h2>
+            <p class="section-description">Meu projeto mais recente</p>
+            
+            <div class="portfolio-single">
+                <div class="project-main">
+                    <div class="project-header">
+                        <h3>ALPHA Cursos Náuticos</h3>
+                        <p>Site completo desenvolvido com HTML, CSS e JavaScript puro</p>
+                        <div class="tech-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Responsivo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Projeto Alpha Cursos Náuticos, desenvolvido com tecnologias front-end puras. Um site completo com múltiplas seções, interatividade e design responsivo.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Layout moderno e responsivo</li>
+                            <li><i class="fas fa-check"></i> Animações e efeitos com CSS/JS</li>
+                            <li><i class="fas fa-check"></i> Formulários funcionais</li>
+                            <li><i class="fas fa-check"></i> Otimizado para performance</li>
+                        </ul>
+                        <div class="project-buttons">
+                            <a href="https://alphaetn.com.br/" target="_blank" class="btn primary">Visitar Projeto</a>
+                            <a href="https://github.com/CelloR18/ALPHA-ETN-FINAL" target="_blank" class="btn secondary">Ver Código no GitHub</a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="project-description">
-                    <p>Projeto Alpha Cursos Náuticos, desenvolvido com tecnologias front-end puras. Um site completo com múltiplas seções, interatividade e design responsivo.</p>
-                    <ul class="project-features">
-                        <li><i class="fas fa-check"></i> Layout moderno e responsivo</li>
-                        <li><i class="fas fa-check"></i> Animações e efeitos com CSS/JS</li>
-                        <li><i class="fas fa-check"></i> Formulários funcionais</li>
-                        <li><i class="fas fa-check"></i> Otimizado para performance</li>
-                    </ul>
-                    <a href="https://alphaetn.com.br/" target="_blank" class="btn primary">Visitar Projeto</a>
-                    <a href="#" class="btn secondary">Ver Código no GitHub</a>
+                <div class="project-gallery">
+                    <h4>Galeria do Projeto</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item main-image">
+                            <a href="./assets/alpha-pagina.png" class="gallery-link" data-caption="Página Inicial"></a>
+                                <img src="./assets/alpha pagina.png" alt="ALPHA ETN - Página inicial">
+                                <div class="image-caption">Página Inicial</div>
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="./assets/alpha-pagina-2.png" class="gallery-link" data-caption="Simulados">
+                                <img src="./assets/alpha pagina 2.png" alt="ALPHA ETN - Seção sobre">
+                                <div class="image-caption">Simulados</div>
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="./assets/alpha-pagina-3.png" class="gallery-link" data-caption="Calendário de Provas">
+                                <img src="./assets/alpha pagina 3.png" alt="ALPHA ETN - Galeria">
+                                <div class="image-caption">Calendário de Provas</div>
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="./assets/alpha-pagina-4.png" class="gallery-link" data-caption="Contatos">
+                                <img src="./assets/alpha pagina 4.png" alt="ALPHA ETN - Formulário">
+                                <div class="image-caption">Contatos</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-           <div class="project-gallery">
-    <h4>Galeria do Projeto</h4>
-    <div class="gallery-grid">
-        <div class="gallery-item main-image">
-            <a href="./assets/alpha pagina.png" class="gallery-link" data-caption="Página Inicial">
-                <img src="./assets/alpha pagina.png" alt="ALPHA ETN - Página inicial">
-                <div class="image-caption">Página Inicial</div>
-            </a>
         </div>
-        <div class="gallery-item">
-            <a href="./assets/alpha pagina 2.png" class="gallery-link" data-caption="Simulados">
-                <img src="./assets/alpha pagina 2.png" alt="ALPHA ETN - Seção sobre">
-                <div class="image-caption">Simulados</div>
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="./assets/alpha pagina 3.png" class="gallery-link" data-caption="Calendário de Provas">
-                <img src="./assets/alpha pagina 3.png" alt="ALPHA ETN - Galeria">
-                <div class="image-caption">Calendário de Provas</div>
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="./assets/alpha pagina 4.png" class="gallery-link" data-caption="Contatos">
-                <img src="./assets/alpha pagina 4.png" alt="ALPHA ETN - Formulário">
-                <div class="image-caption">Contatos</div>
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="./assets/alpha pagina 5.png" class="gallery-link" data-caption="Questões">
-                <img src="./assets/alpha pagina 5.png" alt="ALPHA ETN - Versão mobile">
-                <div class="image-caption">Questões</div>
-            </a>
-        </div>
-    </div>
-</div>
-</section>
     </section>
 
     <section id="servicos" class="services">
@@ -192,94 +190,60 @@
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Design</h3>
+                    <h3>Design Responsivo</h3>
                     <p>Interfaces intuitivas e agradáveis que melhoram a experiência do usuário e aumentam conversões.</p>
                     <ul class="service-features">
-                        <li>Wireframes e Protótipos</li>
-                        <li>Design System</li>
-                        <li>Testes de Usabilidade</li>
+                        <li>Mobile-First</li>
+                        <li>Testes em múltiplos dispositivos</li>
+                        <li>Otimização para performance</li>
                     </ul>
                 </div>
                 
                 <div class="service-card">
-    <div class="service-icon">
-        <i class="fas fa-mobile-alt"></i>
-    </div>
-    <h3>Responsividade Avançada</h3>
-    <p>Sites que se adaptam perfeitamente a todos os dispositivos, garantindo a melhor experiência do usuário.</p>
-    <ul class="service-features">
-        <li>Design Mobile-First</li>
-        <li>Testes em múltiplos dispositivos</li>
-        <li>Otimização para tablets e smartphones</li>
-    </ul>
-</div>
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Otimização SEO</h3>
+                    <p>Melhore seu posicionamento nos mecanismos de busca com técnicas modernas de SEO.</p>
+                    <ul class="service-features">
+                        <li>Análise de palavras-chave</li>
+                        <li>Otimização técnica</li>
+                        <li>Melhoria de performance</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contato" class="contact">
-    <div class="container">
-        <h2><span class="section-number">04.</span> Contato</h2>
-        <p class="section-description">Vamos trabalhar juntos no seu próximo projeto</p>
-        
-        <div class="contact-content">
-            <form id="contact-form" class="contact-form" onsubmit="sendToWhatsApp(event)">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject">Assunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Sobre o que deseja conversar?">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" placeholder="Descreva seu projeto ou dúvida" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn primary">Enviar Mensagem</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<script>
-function sendToWhatsApp(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
-    
-    // Substitua SEU_NUMERO pelo seu número de WhatsApp com código do país
-    // Exemplo: 5511999999999 (55 = Brasil, 11 = DDD, 999999999 = número)
-    const phoneNumber = "+5518996193899"; 
-    
-    // Obtém os valores do formulário
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Formata a mensagem que será enviada
-    const fullMessage = `Olá, meu nome é ${name}!\n\n` +
-                       `*Assunto:* ${subject}\n` +
-                       `*E-mail:* ${email}\n\n` +
-                       `*Mensagem:*\n${message}`;
-    
-    // Codifica a mensagem para URL
-    const encodedMessage = encodeURIComponent(fullMessage);
-    
-    // Cria o link do WhatsApp
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
-    // Abre o WhatsApp em uma nova aba
-    window.open(whatsappUrl, '_blank');
-}
-</script>
+        <div class="container">
+            <h2><span class="section-number">04.</span> Contato</h2>
+            <p class="section-description">Vamos trabalhar juntos no seu próximo projeto</p>
+            
+            <div class="contact-content">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" placeholder="Sobre o que deseja conversar?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="Descreva seu projeto ou dúvida" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn primary">Enviar Mensagem</button>
+                </form>
                 
                 <div class="contact-info">
                     <h3>Informações</h3>
@@ -288,7 +252,7 @@ function sendToWhatsApp(event) {
                     <ul class="info-list">
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>gustavosq2020@hotmail.com</span>
+                            <span>marcelo.gustavodev@hotmail.com</span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
@@ -303,10 +267,10 @@ function sendToWhatsApp(event) {
                     <div class="social-links">
                         <h4>Redes Sociais</h4>
                         <div class="social-icons">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.linkedin.com/in/marcelo-gustavo-santos/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/CelloR18" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/marcelo.gustavodev/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/5518996193899" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
@@ -349,12 +313,9 @@ function sendToWhatsApp(event) {
             
             <div class="footer-bottom">
                 <p>&copy; <span id="year"></span> Marcelo Gustavo. Todos os direitos reservados.</p>
-                <p>Desenvolvido  por Marcelo Gustavo</p>
+                <p>Desenvolvido por Marcelo Gustavo</p>
             </div>
         </div>
-        <button id="back-to-top" class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-</button>
     </footer>
 
     <script src="./js/script.js"></script>

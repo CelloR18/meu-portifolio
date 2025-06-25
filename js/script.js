@@ -2,61 +2,151 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualizar ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Menu mobile
+    // Menu Mobile Aprimorado
     const mobileMenuBtn = document.querySelector('.mobile-menu');
     const nav = document.querySelector('nav ul');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const barsIcon = document.querySelector('.mobile-menu .fa-bars');
+    const timesIcon = document.querySelector('.mobile-menu .fa-times');
     
-    mobileMenuBtn.addEventListener('click', function() {
-        nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+    function toggleMenu() {
+        nav.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        
+        // Alternar ícones
+        if (nav.classList.contains('active')) {
+            barsIcon.style.display = 'none';
+            timesIcon.style.display = 'block';
+        } else {
+            barsIcon.style.display = 'block';
+            timesIcon.style.display = 'none';
+        }
+    }
+    
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
     });
     
-    // Fechar menu ao clicar em um link
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                nav.style.display = 'none';
+    // Fechar menu ao clicar no overlay ou em links
+    menuOverlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+    
+    // Fechar menu ao rolar
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        if (Math.abs(currentScroll - lastScroll) > 50 && nav.classList.contains('active')) {
+            toggleMenu();
+        }
+        lastScroll = currentScroll;
+    });
+    
+    // Lightbox para galeria
+    function initLightbox() {
+        const galleryLinks = document.querySelectorAll('.gallery-link');
+        if (galleryLinks.length === 0) return;
+        
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-content">
+                <span class="close-lightbox">&times;</span>
+                <img class="lightbox-img" src="" alt="">
+                <div class="lightbox-caption"></div>
+                <div class="lightbox-nav">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+        
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeBtn = lightbox.querySelector('.close-lightbox');
+        const prevBtn = lightbox.querySelector('.prev-btn');
+        const nextBtn = lightbox.querySelector('.next-btn');
+        
+        let currentIndex = 0;
+        const galleryItems = Array.from(galleryLinks);
+        
+        function openLightbox(index) {
+            currentIndex = index;
+            const item = galleryItems[currentIndex];
+            lightboxImg.src = item.href;
+            lightboxImg.alt = item.querySelector('img').alt;
+            lightboxCaption.textContent = item.dataset.caption || '';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Atualizar navegação
+            prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+            nextBtn.style.display = currentIndex === galleryItems.length - 1 ? 'none' : 'flex';
+        }
+        
+        function navigate(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = galleryItems.length - 1;
+            if (currentIndex >= galleryItems.length) currentIndex = 0;
+            openLightbox(currentIndex);
+        }
+        
+        // Abrir lightbox ao clicar nos itens
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                openLightbox(index);
+            });
+        });
+        
+        // Event listeners para controles
+        closeBtn.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            navigate(-1);
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            navigate(1);
+        });
+        
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
-    });
-    
-    // Formulário de contato
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        
+        // Navegação por teclado
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
             
-            // Simular envio do formulário
-            const formData = new FormData(contactForm);
-            const formObject = Object.fromEntries(formData.entries());
-            console.log('Dados do formulário:', formObject);
-            
-            // Criar feedback visual
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitBtn.disabled = true;
-            
-            // Simular tempo de envio
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado com sucesso!';
-                
-                // Resetar após 2 segundos
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    contactForm.reset();
-                }, 2000);
-            }, 1500);
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            if (e.key === 'ArrowLeft') {
+                navigate(-1);
+            }
+            if (e.key === 'ArrowRight') {
+                navigate(1);
+            }
         });
     }
+    
+    initLightbox();
     
     // Scroll suave para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
@@ -95,204 +185,58 @@ document.addEventListener('DOMContentLoaded', function() {
     // Verificar ao carregar e ao rolar
     window.addEventListener('load', checkScroll);
     window.addEventListener('scroll', checkScroll);
-    
-    // Verificar imediatamente para elementos já visíveis
     checkScroll();
     
-    // Efeito de digitação no hero (opcional)
-    const typedElements = document.querySelectorAll('.typed');
-    if (typedElements.length > 0) {
-        // Implementação de efeito de digitação pode ser adicionada aqui
-        // Sugestão: usar a biblioteca Typed.js para esse efeito
-    }
-    // Atualize a função initGalleryLightbox no script.js
-function initGalleryLightbox() {
-    const galleryItems = document.querySelectorAll('.gallery-item img');
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    lightbox.innerHTML = `
-        <div class="lightbox-content">
-            <span class="close-lightbox">&times;</span>
-            <img src="" alt="">
-            <div class="lightbox-caption"></div>
-            <div class="lightbox-nav">
-                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(lightbox);
+    // Botão "voltar ao topo"
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(backToTopBtn);
     
-    const lightboxImg = lightbox.querySelector('img');
-    const closeBtn = lightbox.querySelector('.close-lightbox');
-    const caption = lightbox.querySelector('.lightbox-caption');
-    const prevBtn = lightbox.querySelector('.prev-btn');
-    const nextBtn = lightbox.querySelector('.next-btn');
-    let currentIndex = 0;
-    
-    // Array com todos os itens da galeria
-    const galleryArray = Array.from(galleryItems);
-    
-    // Função para abrir o lightbox
-    function openLightbox(index) {
-        currentIndex = index;
-        lightbox.style.display = 'flex';
-        lightboxImg.src = galleryArray[currentIndex].src;
-        lightboxImg.alt = galleryArray[currentIndex].alt;
-        
-        // Adiciona a legenda se existir
-        const imageCaption = galleryArray[currentIndex].nextElementSibling;
-        if (imageCaption && imageCaption.classList.contains('image-caption')) {
-            caption.textContent = imageCaption.textContent;
-            caption.style.display = 'block';
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
         } else {
-            caption.style.display = 'none';
+            backToTopBtn.classList.remove('visible');
         }
-        
-        // Desabilita/ativa botões de navegação
-        prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
-        nextBtn.style.display = currentIndex === galleryArray.length - 1 ? 'none' : 'flex';
-        
-        // Previne scroll no body
-        document.body.style.overflow = 'hidden';
-    }
+    });
     
-    // Event listeners para os itens da galeria
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            openLightbox(index);
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
     
-    // Navegação entre imagens
-    function navigate(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = galleryArray.length - 1;
-        if (currentIndex >= galleryArray.length) currentIndex = 0;
-        openLightbox(currentIndex);
+    // Formulário de contato
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const text = `👋 Olá, Marcelo!%0A%0A📌Meu Nome é: ${encodeURIComponent(name)}%0A📧 E-mail: ${encodeURIComponent(email)}%0A📝 Assunto: ${encodeURIComponent(subject)}%0A💬 Mensagem: ${encodeURIComponent(message)}`;
+
+            const phone = '5518996193899';
+            const url = `https://wa.me/${phone}?text=${text}`;
+
+            window.open(url, '_blank');
+
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            contactForm.reset();
+
+        });
     }
-    
-    // Event listeners para controles do lightbox
-    closeBtn.addEventListener('click', function() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-    
-    prevBtn.addEventListener('click', function() {
-        navigate(-1);
-    });
-    
-    nextBtn.addEventListener('click', function() {
-        navigate(1);
-    });
-    
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Navegação por teclado
-    document.addEventListener('keydown', function(e) {
-        if (lightbox.style.display === 'flex') {
-            if (e.key === 'Escape') {
-                lightbox.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-            if (e.key === 'ArrowLeft') {
-                navigate(-1);
-            }
-            if (e.key === 'ArrowRight') {
-                navigate(1);
-            }
-        }
-    });
-}
-// Inicializar quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    // ... outros códigos existentes ...
-    
-    initGalleryLightbox();
-});
-
-});
-// Menu Mobile Aprimorado
-const mobileMenuBtn = document.querySelector('.mobile-menu');
-const nav = document.querySelector('nav ul');
-const barsIcon = document.querySelector('.mobile-menu .fa-bars');
-const timesIcon = document.querySelector('.mobile-menu .fa-times') || document.createElement('i');
-
-// Cria o ícone de fechar se não existir
-if (!document.querySelector('.mobile-menu .fa-times')) {
-    timesIcon.className = 'fas fa-times';
-    timesIcon.style.display = 'none';
-    mobileMenuBtn.appendChild(timesIcon);
-}
-
-// Cria o overlay
-const overlay = document.createElement('div');
-overlay.className = 'menu-overlay';
-document.body.appendChild(overlay);
-
-mobileMenuBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    nav.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
-    overlay.classList.toggle('active');
-    
-    // Alterna entre os ícones
-    if (nav.classList.contains('active')) {
-        barsIcon.style.display = 'none';
-        timesIcon.style.display = 'block';
-    } else {
-        barsIcon.style.display = 'block';
-        timesIcon.style.display = 'none';
-    }
-});
-
-// Fechar menu ao clicar no overlay ou em um link
-overlay.addEventListener('click', closeMenu);
-document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-function closeMenu() {
-    nav.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-    overlay.classList.remove('active');
-    barsIcon.style.display = 'block';
-    timesIcon.style.display = 'none';
-}
-
-// Fechar menu ao rolar
-let lastScroll = 0;
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset;
-    if (Math.abs(currentScroll - lastScroll) > 50) {
-        closeMenu();
-    }
-    lastScroll = currentScroll;
-});
-// Adicione ao script.js
-const backToTopBtn = document.createElement('button');
-backToTopBtn.id = 'back-to-top';
-backToTopBtn.className = 'back-to-top';
-backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-document.body.appendChild(backToTopBtn);
-
-window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-});
-
-backToTopBtn.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
 });
