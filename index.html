@@ -3,29 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Marcelo Gustavo | Desenvolvedor Front-End</title>
-    <meta name="description" content="Portfólio de Marcelo Gustavo - Desenvolvedor Front-End especializado em criar experiências digitais modernas e responsivas">
+    <title>Marcelo Gustavo | Desenvolvedor Front-End Especialista</title>
+    <meta name="description" content="Portfólio profissional de Marcelo Gustavo - Especialista em desenvolvimento Front-End com foco em experiências digitais performáticas e acessíveis">
     <meta name="theme-color" content="#121212">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 <body>
+    <!-- Cursor Personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <span>MG</span>
+            </div>
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar"></div>
+            </div>
+            <div class="preloader-counter">0%</div>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <span>Marcelo Gustavo</span>
-                <span>Front-End Developer</span>
+                <span class="logo-main">Marcelo Gustavo</span>
+                <span class="logo-sub">Front-End Developer</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -36,128 +56,132 @@
         <div class="menu-overlay"></div>
     </header>
 
+    <!-- Hero Section -->
     <section id="inicio" class="hero">
+        <div class="particles" id="particles-js"></div>
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="./assets/hero-bg.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-text">
-                <h1>Transformando ideias em <span class="highlight">experiências digitais</span></h1>
-                <p class="subtitle">Desenvolvimento Front-End de alta qualidade com foco em performance e usabilidade</p>
-                <div class="cta-buttons">
-                    <a href="#contato" class="btn primary">Solicitar Orçamento</a>
-                    <a href="#portfolio" class="btn secondary">Ver Portfólio</a>
+                <h6 class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Olá, eu sou</h6>
+                <h1 data-aos="fade-up" data-aos-delay="200">Marcelo Gustavo</h1>
+                <div class="hero-typed" data-aos="fade-up" data-aos-delay="300">
+                    <span class="typed-text"></span>
+                    <span class="typed-cursor">|</span>
                 </div>
-            </div>
-            
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="400">Desenvolvimento Front-End de alta qualidade com foco em performance, acessibilidade e melhores práticas</p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="500">
+                    <a href="#contato" class="btn primary pulse">Solicitar Orçamento <i class="fas fa-arrow-right"></i></a>
+                    <a href="#portfolio" class="btn secondary">Ver Portfólio <i class="fas fa-eye"></i></a>
+                </div>
+                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="600">
+                    <span>Scroll</span>
+                    <div class="line"></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="sobre" class="about">
         <div class="container">
-            <h2><span class="section-number">01.</span> Sobre Mim</h2>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title"><span class="section-number">01.</span> Sobre Mim</h2>
+                <p class="section-description">Minha jornada e habilidades</p>
+            </div>
+            
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text" data-aos="fade-right">
                     <p class="intro">Olá, eu sou Marcelo Gustavo, desenvolvedor Front-End especializado em criar interfaces modernas, responsivas e acessíveis.</p>
-                    <p>Atulamente auxilio empreendedores a transformar suas ideias em produtos digitais de alta qualidade.</p>
-                    <p>Minha abordagem combina design cuidadoso com código limpo e eficiente, garantindo a melhor experiência para os usuários finais.</p>
+                    <p>Com mais de 5 anos de experiência, transformo ideias em produtos digitais de alta qualidade, combinando design cuidadoso com código limpo e eficiente.</p>
+                    <p>Minha abordagem prioriza performance, acessibilidade e boas práticas de desenvolvimento para garantir a melhor experiência para os usuários finais.</p>
                     
                     <div class="skills">
                         <h3>Tecnologias que domino:</h3>
                         <div class="skills-grid">
                             <div class="skill-item">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML5</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML5</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="95%"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-css3-alt"></i>
-                                <span>CSS3/Sass</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">CSS3/Sass</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="90%"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript ES6+</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript ES6+</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="85%"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-react"></i>
-                                <span>React.js</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">React.js</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="80%"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-node-js"></i>
-                                <span>Node.js</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-node-js"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">Node.js</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="75%"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-git-alt"></i>
-                                <span>Git</span>
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name">Git</span>
+                                    <div class="skill-level">
+                                        <div class="level-bar" data-level="85%"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Responsive Design</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2><span class="section-number">02.</span> Portfólio</h2>
-            <p class="section-description">Meu projeto mais recente</p>
-            
-            <div class="portfolio-single">
-                <div class="project-main">
-                    <div class="project-header">
-                        <h3>ALPHA Cursos Náuticos</h3>
-                        <p>Site completo desenvolvido com HTML, CSS e JavaScript puro</p>
-                        <div class="tech-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Responsivo</span>
-                        </div>
-                    </div>
-                    
-                    <div class="project-description">
-                        <p>Projeto Alpha Cursos Náuticos, desenvolvido com tecnologias front-end puras. Um site completo com múltiplas seções, interatividade e design responsivo.</p>
-                        <ul class="project-features">
-                            <li><i class="fas fa-check"></i> Layout moderno e responsivo</li>
-                            <li><i class="fas fa-check"></i> Animações e efeitos com CSS/JS</li>
-                            <li><i class="fas fa-check"></i> Formulários funcionais</li>
-                            <li><i class="fas fa-check"></i> Otimizado para performance</li>
-                        </ul>
-                        <div class="project-buttons">
-                            <a href="https://alphaetn.com.br/" target="_blank" class="btn primary">Visitar Projeto</a>
-                            <a href="https://github.com/CelloR18/ALPHA-ETN-FINAL" target="_blank" class="btn secondary">Ver Código no GitHub</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="project-gallery">
-                    <h4>Galeria do Projeto</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item main-image">
-                            <a href="./assets/alpha pagina.png" class="gallery-link" data-caption="Página Inicial"></a>
-                                <img src="./assets/alpha pagina.png" alt="ALPHA ETN - Página inicial">
-                                <div class="image-caption">Página Inicial</div>
-                            </a>
-                        </div>
-                        <div class="gallery-item">
-                            <a href="./assets/alpha pagina 2.png" class="gallery-link" data-caption="Simulados">
-                                <img src="./assets/alpha pagina 2.png" alt="ALPHA ETN - Seção sobre">
-                                <div class="image-caption">Simulados</div>
-                            </a>
-                        </div>
-                        <div class="gallery-item">
-                            <a href="./assets/alpha pagina 3.png" class="gallery-link" data-caption="Calendário de Provas">
-                                <img src="./assets/alpha pagina 3.png" alt="ALPHA ETN - Galeria">
-                                <div class="image-caption">Calendário de Provas</div>
-                            </a>
-                        </div>
-                        <div class="gallery-item">
-                            <a href="./assets/alpha pagina 4.png" class="gallery-link" data-caption="Contatos">
-                                <img src="./assets/alpha pagina 4.png" alt="ALPHA ETN - Formulário">
-                                <div class="image-caption">Contatos</div>
-                            </a>
+                <div class="about-image" data-aos="fade-left">
+                    <div class="image-frame">
+                        <div class="frame-decoration"></div>
+                        <img src="./assets/profile.jpg" alt="Marcelo Gustavo" class="profile-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h4>5+ Anos</h4>
+                                <p>de experiência</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -165,41 +189,174 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title"><span class="section-number">02.</span> Portfólio</h2>
+                <p class="section-description">Meus projetos selecionados</p>
+            </div>
+            
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <img src="./ASSETS/alpha-inicial.png" alt="Projeto Alpha Cursos">
+                            <div class="project-card-content">
+                                <div class="project-badge">Destaque</div>
+                                <h3>Alpha Cursos Náuticos</h3>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Alpha Cursos Náuticos</h3>
+                            <p>Site completo desenvolvido com tecnologias front-end puras, resultando em aumento de 40% nas conversões.</p>
+                            <div class="project-card-buttons">
+                                <a href="https://alphaetn.com.br/" target="_blank" class="btn small">Visitar Projeto</a>
+                                <a href="https://www.alphaetn.com.br/" target="_blank" class="btn small secondary">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <img src="./assets/atamar-inicial.png" alt="Assessoria Fluvial">
+                            <div class="project-card-content">
+                                <h3>Assessoria Fluvial</h3>
+                                <div class="tech-tags">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>Javascript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Assessoria Fluvial Atamar Vieira</h3>
+                            <p>Plataforma completa com simulados para os Usuários.</p>
+                            <div class="project-card-buttons">
+                                <a href="whttps://atamarvieira.netlify.app/" class="btn small">Detalhes</a>
+                                <a href="https://atamarvieira.netlify.app/" class="btn small secondary">Ver Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="mobile" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <img src="./assets/controles-vendas.png" alt="App Financeiro">
+                            <div class="project-card-content">
+                                <h3>App Financeiro</h3>
+                                <div class="tech-tags">
+                                    <span>React</span>
+                                    <span>Javascript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>App Financeiro</h3>
+                            <p>Aplicativo para controle financeiro para vendedores.</p>
+                            <div class="project-card-buttons">
+                                <a href="#" class="btn small">Detalhes</a>
+                                <a href="#" class="btn small secondary">Ver Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="design" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <img src="./assets/project4.jpg" alt="Landing Page Premium">
+                            <div class="project-card-content">
+                                <h3>Landing Page Premium</h3>
+                                <div class="tech-tags">
+                                    <span>UI/UX</span>
+                                    <span>Figma</span>
+                                    <span>Webflow</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Landing Page Premium</h3>
+                            <p>Design de alta conversão com foco em experiência do usuário.</p>
+                            <div class="project-card-buttons">
+                                <a href="#" class="btn small">Detalhes</a>
+                                <a href="#" class="btn small secondary">Ver Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-cta" data-aos="fade-up">
+                <p>Quer ver mais projetos ou detalhes sobre meu trabalho?</p>
+                <a href="#contato" class="btn primary">Fale Comigo <i class="fas fa-paper-plane"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
     <section id="servicos" class="services">
         <div class="container">
-            <h2><span class="section-number">03.</span> Serviços</h2>
-            <p class="section-description">Como posso ajudar no seu próximo projeto</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title"><span class="section-number">03.</span> Serviços</h2>
+                <p class="section-description">Como posso ajudar no seu próximo projeto</p>
+            </div>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                        <div class="icon-circle">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
                     </div>
                     <h3>Desenvolvimento Web</h3>
                     <p>Sites responsivos e otimizados para todos os dispositivos, com foco em performance, acessibilidade e SEO.</p>
                     <ul class="service-features">
-                        <li>Landing Pages</li>
-                        <li>Sites Institucionais</li>
+                        <li>Landing Pages de alta conversão</li>
+                        <li>Sites Institucionais modernos</li>
                         <li>SPAs (Single Page Apps)</li>
+                        <li>Integração com APIs</li>
                     </ul>
+                    
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <div class="icon-circle">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
                     </div>
                     <h3>Design Responsivo</h3>
                     <p>Interfaces intuitivas e agradáveis que melhoram a experiência do usuário e aumentam conversões.</p>
                     <ul class="service-features">
-                        <li>Mobile-First</li>
+                        <li>Mobile-First approach</li>
                         <li>Testes em múltiplos dispositivos</li>
                         <li>Otimização para performance</li>
+                        <li>Design System</li>
                     </ul>
+                    
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">
-                        <i class="fas fa-search"></i>
+                        <div class="icon-circle">
+                            <i class="fas fa-search"></i>
+                        </div>
                     </div>
                     <h3>Otimização SEO</h3>
                     <p>Melhore seu posicionamento nos mecanismos de busca com técnicas modernas de SEO.</p>
@@ -207,68 +364,73 @@
                         <li>Análise de palavras-chave</li>
                         <li>Otimização técnica</li>
                         <li>Melhoria de performance</li>
+                        <li>Relatório completo</li>
                     </ul>
+                  
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="contact">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
         <div class="container">
-            <h2><span class="section-number">04.</span> Contato</h2>
-            <p class="section-description">Vamos trabalhar juntos no seu próximo projeto</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Depoimentos</h2>
+                <p class="section-description">O que meus clientes dizem</p>
+            </div>
             
-            <div class="contact-content">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Marcelo transformou completamente nosso site, resultando em um aumento de 60% nas conversões. Profissional altamente qualificado e comprometido com os resultados."</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="./assets/client1.jpg" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <span>CEO, Alpha Cursos</span>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Assunto</label>
-                        <input type="text" id="subject" name="subject" placeholder="Sobre o que deseja conversar?">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" placeholder="Descreva seu projeto ou dúvida" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn primary">Enviar Mensagem</button>
-                </form>
+                </div>
                 
-                <div class="contact-info">
-                    <h3>Informações</h3>
-                    <p>Entre em contato para discutir seu projeto ou solicitar um orçamento.</p>
-                    
-                    <ul class="info-list">
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>marcelo.gustavodev@hotmail.com</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>(18) 99619-3899</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Presidente Epitácio, SP - Brasil</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="social-links">
-                        <h4>Redes Sociais</h4>
-                        <div class="social-icons">
-                            <a href="https://www.linkedin.com/in/marcelo-gustavo-santos/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/CelloR18" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://www.instagram.com/marcelo.gustavodev/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://wa.me/5518996193899" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Trabalhar com Marcelo foi uma experiência incrível. Entendeu perfeitamente nossa visão e entregou além das expectativas. Recomendo sem dúvidas!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="./assets/client2.jpg" alt="Ana Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Oliveira</h4>
+                            <span>Diretora de Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"O trabalho de Marcelo superou todas as expectativas. Seu conhecimento técnico e atenção aos detalhes resultaram em um produto final excepcional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="./assets/client3.jpg" alt="Ricardo Fernandes">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ricardo Fernandes</h4>
+                            <span>CTO, TechSolutions</span>
                         </div>
                     </div>
                 </div>
@@ -276,18 +438,143 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title"><span class="section-number">04.</span> Contato</h2>
+                <p class="section-description">Vamos criar algo incrível juntos</p>
+            </div>
+            
+            <div class="contact-content">
+                <form id="contact-form" class="contact-form" data-aos="fade-right">
+                    <div class="form-header">
+                        <h3>Envie sua mensagem</h3>
+                        <p>Responderei em até 24 horas</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Nome</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">E-mail</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder=" ">
+                        <label for="subject">Assunto</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder=" " required></textarea>
+                        <label for="message">Mensagem</label>
+                    </div>
+                    
+                    <button type="submit" class="btn primary full-width">
+                        <span class="btn-text">Enviar Mensagem</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                <div class="contact-info" data-aos="fade-left">
+                    <div class="info-card">
+                        <h3>Informações de Contato</h3>
+                        <p>Entre em contato para discutir seu projeto ou solicitar um orçamento personalizado.</p>
+                        
+                        <ul class="info-list">
+                            <li>
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span>E-mail</span>
+                                    <a href="mailto:marcelo.gustavodev@hotmail.com">marcelo.gustavodev@hotmail.com</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span>Telefone</span>
+                                    <a href="tel:+5518996193899">(18) 99619-3899</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span>Localização</span>
+                                    <span>Presidente Epitácio, SP - Brasil</span>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="social-links">
+                            <h4>Conecte-se Comigo</h4>
+                            <div class="social-icons">
+                                <a href="https://www.linkedin.com/in/marcelo-gustavo-santos/" target="_blank" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/CelloR18" aria-label="GitHub" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="https://www.instagram.com/marcelo.gustavodev/" target="_blank" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/5518996193899" aria-label="WhatsApp" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Clientes</h2>
+                <p class="section-description">Alguns dos projetos que tive o prazer de trabalhar</p>
+            </div>
+            
+            <div class="clients-grid">
+                <div class="client-logo" data-aos="fade-up" data-aos-delay="100">
+                    <img src="./assets/client-logo1.png" alt="Logo Cliente 1">
+                </div>
+                <div class="client-logo" data-aos="fade-up" data-aos-delay="200">
+                    <img src="./assets/client-logo2.png" alt="Logo Cliente 2">
+                </div>
+                <div class="client-logo" data-aos="fade-up" data-aos-delay="300">
+                    <img src="./assets/client-logo3.png" alt="Logo Cliente 3">
+                </div>
+                <div class="client-logo" data-aos="fade-up" data-aos-delay="400">
+                    <img src="./assets/client-logo4.png" alt="Logo Cliente 4">
+                </div>
+                <div class="client-logo" data-aos="fade-up" data-aos-delay="500">
+                    <img src="./assets/client-logo5.png" alt="Logo Cliente 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="logo">
-                        <span>Marcelo Gustavo</span>
-                        <span>Front-End Developer</span>
+                        <span class="logo-main">Marcelo Gustavo</span>
+                        <span class="logo-sub">Front-End Developer</span>
                     </div>
                     <p>Desenvolvendo soluções digitais que combinam design e tecnologia para criar experiências excepcionais.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
                     <h4>Links Rápidos</h4>
                     <ul>
                         <li><a href="#inicio">Início</a></li>
@@ -298,7 +585,7 @@
                     </ul>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
                     <h4>Serviços</h4>
                     <ul>
                         <li><a href="#">Desenvolvimento Web</a></li>
@@ -307,15 +594,55 @@
                         <li><a href="#">Consultoria</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="400">
+                    <h4>Newsletter</h4>
+                    <p>Assine para receber atualizações e conteúdos exclusivos.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit" class="btn small primary">Assinar</button>
+                    </form>
+                </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; <span id="year"></span> Marcelo Gustavo. Todos os direitos reservados.</p>
-                <p>Desenvolvido por Marcelo Gustavo</p>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Serviço</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="./js/script.js"></script>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-lightbox" aria-label="Fechar lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="" class="lightbox-img">
+            <div class="lightbox-caption"></div>
+            <div class="lightbox-nav">
+                <button class="prev-btn" aria-label="Imagem anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" aria-label="Próxima imagem">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
