@@ -102,6 +102,58 @@ document.querySelectorAll('a, button').forEach(el => {
         cursorFollower.classList.remove('active');
     });
 });
+// Detectar dispositivos móveis
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// Desativar efeitos pesados em mobile
+if (isMobile) {
+    // Desativar particles.js
+    if (document.getElementById('particles-js')) {
+        document.getElementById('particles-js').style.display = 'none';
+    }
+    
+    // Desativar vídeo de fundo no hero
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        heroVideo.style.display = 'none';
+    }
+    
+    // Simplificar animações
+    AOS.init({
+        disable: 'mobile',
+        duration: 300,
+        once: true
+    });
+    
+    // Desativar cursor personalizado
+    document.querySelector('.cursor').style.display = 'none';
+    document.querySelector('.cursor-follower').style.display = 'none';
+}
+
+// Melhorar o menu mobile
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            document.querySelector('.mobile-menu').classList.remove('active');
+            document.querySelector('nav ul').classList.remove('active');
+            document.querySelector('.menu-overlay').classList.remove('active');
+        }
+    });
+});
+
+// Preloader otimizado para mobile
+if (isMobile) {
+    window.addEventListener('load', function() {
+        const preloader = document.querySelector('.preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 300);
+    });
+}
 
 // Atualiza o ano no footer
 document.getElementById('year').textContent = new Date().getFullYear();
