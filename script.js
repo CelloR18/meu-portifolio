@@ -157,3 +157,19 @@ if (isMobile) {
 
 // Atualiza o ano no footer
 document.getElementById('year').textContent = new Date().getFullYear();
+// Atualizei a função de filtro para incluir os novos projetos
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filterValue = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});

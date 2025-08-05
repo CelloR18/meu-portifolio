@@ -254,17 +254,20 @@ section {
     min-width: 44px;
     position: relative;
     overflow: hidden;
+    color: #faf8f8; /* Texto preto em todos os botões */
 }
 
 .btn .btn-text {
     position: relative;
     z-index: 2;
+    color: inherit;
 }
 
 .btn i {
     position: relative;
     z-index: 2;
     transition: transform var(--transition-base);
+    color: inherit;
 }
 
 .btn::before {
@@ -274,7 +277,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--primary-color);
+    color: #fffdfd;
     z-index: 1;
     transition: transform var(--transition-base);
     transform-origin: right;
@@ -292,7 +295,7 @@ section {
 
 .btn.primary {
     background-color: var(--primary-color);
-    color: white;
+    color: #f8f5f5; /* Texto preto */
     box-shadow: var(--shadow-primary);
 }
 
@@ -300,11 +303,12 @@ section {
     background-color: var(--primary-hover);
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(100, 108, 255, 0.4);
+    color: #fffdfd; /* Mantém texto preto no hover */
 }
 
 .btn.secondary {
     background-color: transparent;
-    color: var(--primary-color);
+    color: #fcfcfc; /* Texto preto */
     border: 1px solid var(--primary-color);
     position: relative;
 }
@@ -315,7 +319,7 @@ section {
 }
 
 .btn.secondary:hover {
-    color: white;
+    color: #fffefe; /* Mantém texto preto no hover */
     transform: translateY(-3px);
     box-shadow: var(--shadow-primary);
 }
@@ -566,30 +570,6 @@ nav ul li a:hover::after {
     margin-top: 2rem;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--text-light);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 2;
-    animation: bounce 2s infinite;
-}
-
-.scroll-indicator .line {
-    width: 1px;
-    height: 50px;
-    background: var(--text-light);
-    margin-top: 10px;
-    position: relative;
 }
 
 .scroll-indicator .line::after {
@@ -881,11 +861,12 @@ nav ul li a:hover::after {
     border-radius: 50px;
     cursor: pointer;
     transition: all var(--transition-base);
+    color: #fdfdfd; /* Texto preto */
 }
 
 .filter-btn:hover, .filter-btn.active {
     background: var(--primary-color);
-    color: white;
+    color: #ffffff; /* Texto preto */
     border-color: var(--primary-color);
 }
 
@@ -947,7 +928,7 @@ nav ul li a:hover::after {
     top: -15px;
     right: 20px;
     background: var(--primary-color);
-    color: white;
+    color: #000; /* Texto preto */
     padding: 0.3rem 1rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -978,7 +959,7 @@ nav ul li a:hover::after {
 
 .project-card-back {
     background: var(--primary-color);
-    color: white;
+    color: #000; /* Texto preto */
     transform: rotateY(180deg);
     padding: 1.5rem;
     display: flex;
@@ -1000,6 +981,21 @@ nav ul li a:hover::after {
 .project-card-buttons {
     display: flex;
     gap: 1rem;
+}
+
+.project-card-buttons .btn.small {
+    color: #ffffff; /* Texto preto */
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.project-card-buttons .btn.small.secondary {
+    background: transparent;
+    color: #ffffff; /* Texto preto */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.project-card-buttons .btn.small.secondary:hover {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .portfolio-cta {
@@ -1061,7 +1057,7 @@ nav ul li a:hover::after {
 
 .service-card.featured .service-price {
     background: var(--primary-color);
-    color: white;
+    color: #ffffff; /* Texto preto */
 }
 
 .service-card::before {
@@ -1093,7 +1089,7 @@ nav ul li a:hover::after {
 .service-card:hover h3,
 .service-card:hover p,
 .service-card:hover .service-features li {
-    color: white;
+    color: #ffffff; /* Texto preto no hover */
 }
 
 .service-card:hover .service-price {
@@ -1427,7 +1423,6 @@ nav ul li a:hover::after {
 
 .info-list li {
     display: flex;
-    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -1491,7 +1486,7 @@ nav ul li a:hover::after {
 
 .social-icon:hover {
     background: var(--primary-color);
-    color: white;
+    color: #ffffff; /* Texto preto no hover */
     transform: translateY(-3px);
     box-shadow: var(--shadow-primary);
 }
@@ -1590,7 +1585,7 @@ footer::before {
 
 .footer-social a:hover {
     background: var(--primary-color);
-    color: white;
+    color: #ffffff; /* Texto preto no hover */
     transform: translateY(-3px);
 }
 
@@ -1655,7 +1650,7 @@ footer::before {
     height: 50px;
     border-radius: 50%;
     background: var(--primary-color);
-    color: white;
+    color: #000; /* Texto preto */
     border: none;
     cursor: pointer;
     display: none;
